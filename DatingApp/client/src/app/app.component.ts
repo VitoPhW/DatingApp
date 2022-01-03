@@ -19,17 +19,10 @@ export class AppComponent implements OnInit {
 
   getUsers() {
     this.http.get('https://localhost:5001/api/users').subscribe(
-      res =>
-      {
-        this.users = res; //HW: WTF Cors?
-      },
-      err => {
-        console.log(err);
-      },
-      () => 
-      {
-        console.log('User loaded');
-      }
+      res => { this.users = res; },
+      err => { console.log(err); },
+      () => { console.log('User loaded'); });
+    // {
       // next: (data) =>
       // {
       //   this.users = data;
@@ -40,7 +33,8 @@ export class AppComponent implements OnInit {
       // complete: () => {
       //   console.log('complete');
       // }
-    );
+    // }
+    // );
 
   }
 }
