@@ -15,15 +15,15 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
+import { ToastrModule } from 'ngx-toastr';
+import { CoreModule } from './modules/core.module';
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     NavComponent,
     HomeComponent,
     RegisterComponent,
-    MemberListComponent,
-    MemberDetailComponent,
     ListsComponent,
       MessagesComponent
    ],
@@ -33,7 +33,7 @@ import { MessagesComponent } from './messages/messages.component';
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    BsDropdownModule.forRoot()
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
