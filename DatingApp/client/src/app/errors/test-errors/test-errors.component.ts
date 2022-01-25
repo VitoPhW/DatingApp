@@ -7,14 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./test-errors.component.css']
 })
 export class TestErrorsComponent implements OnInit {
-  baseURL = "http://localhost:5001/api/";
+  baseURL = "https://localhost:5001/api/";
   validationErrors: string[] = [];
 
   constructor(private http: HttpClient) { }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void { }
 
   get404Error(){
     this.http.get(`${this.baseURL}buggy/not-found`).subscribe(response => {
@@ -49,7 +47,7 @@ export class TestErrorsComponent implements OnInit {
   }
 
   get400ValidationError(){
-    this.http.get(`${this.baseURL}account/register`, {}).subscribe(response => {
+    this.http.post(`${this.baseURL}account/register`, {}).subscribe(response => {
       console.log(response);
     }, error => {
       console.log(error);

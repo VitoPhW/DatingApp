@@ -26,10 +26,10 @@ const routes: Routes = [
         path: 'members',
         loadChildren: () => import('./modules/members.module').then(m => m.MembersModule)
       },
-      { path: 'members', component:MemberListComponent,},
-      { path: 'members/:id', component: MemberDetailComponent,},
-      { path: 'lists',component: ListsComponent,},
-      { path: 'messages',component: MessagesComponent,},
+      { path: 'members', component:MemberListComponent },
+      { path: 'members/:id', component: MemberDetailComponent },
+      { path: 'lists',component: ListsComponent },
+      { path: 'messages',component: MessagesComponent },
     ]
   },
   { path: 'not-found', component: NotFoundComponent },
@@ -38,7 +38,7 @@ const routes: Routes = [
   {
     path: '**', // non-existing-rout
     pathMatch: 'full',
-    component: HomeComponent
+    component: NotFoundComponent
   }
 ];
 
