@@ -2,8 +2,6 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import { MessagesComponent } from './messages/messages.component';
 import { ListsComponent } from './lists/lists.component';
-import { MemberDetailComponent } from './members/member-detail/member-detail.component';
-import { MemberListComponent } from './members/member-list/member-list.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { AuthGuard } from './guards/auth.guard';
@@ -26,15 +24,13 @@ const routes: Routes = [
         path: 'members',
         loadChildren: () => import('./modules/members.module').then(m => m.MembersModule)
       },
-      { path: 'members', component:MemberListComponent },
-      { path: 'members/:id', component: MemberDetailComponent },
       { path: 'lists',component: ListsComponent },
       { path: 'messages',component: MessagesComponent },
     ]
   },
+  { path: 'errors', component: TestErrorsComponent },
   { path: 'not-found', component: NotFoundComponent },
   { path: 'server-error', component: ServerErrorComponent },
-  { path: 'errors', component: TestErrorsComponent },
   {
     path: '**', // non-existing-rout
     pathMatch: 'full',
