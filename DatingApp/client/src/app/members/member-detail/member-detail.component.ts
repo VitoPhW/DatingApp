@@ -48,7 +48,7 @@ export class MemberDetailComponent implements OnInit {
 
   getImages(): NgxGalleryImage[] {
     const imgUrls: NgxGalleryImage[] = [];
-    for(const photo of this.member.photos) {
+    for (const photo of this.member.photos) {
       imgUrls.push({
         small: photo.url,
         medium: photo.url,
@@ -60,9 +60,15 @@ export class MemberDetailComponent implements OnInit {
 
   loadMember() {
     const username = this.route.snapshot.paramMap.get('username') as string;
-    this.memberService.getMember(username).subscribe(member => {
-      this.member = member;
-      this.galleryImages = this.getImages();
-    });
+    this
+      .memberService // contact service "MembersService"
+      .getMember(username) // in the service contact function "getMember"
+      .subscribe // ask to let you know when the function returns the requested "member"
+      (member => // take the "member" which came, do the following with
+        {
+          this.member = member; // assign the "member" that came to local "member"
+          this.galleryImages = this.getImages(); // after the "member" came and has assigned to local "member", get his photos
+        }
+      );
   }
 }

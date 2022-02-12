@@ -17,7 +17,11 @@ export class MembersService {
     return this.http.get<Member[]>(`${this.baseUrl}users`)
   }
 
-  getMember(username: string): Observable<Member>{
-    return this.http.get<Member>(`${this.baseUrl}users/${username}`)
+  getMember(username: string) // creating a function that brings a "member" from a server
+  : Observable<Member> // turning the function to one that can let you know when she is back with the "member"
+  { return this.http.get<Member>(`${this.baseUrl}users/${username}`) } // ??? where from come the "member"
+
+  updateMember(member:Member){
+    return this.http.put(`${this.baseUrl}users`, member);
   }
 }
