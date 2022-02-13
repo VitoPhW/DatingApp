@@ -109,3 +109,5 @@ StudentAssets
 .vs
 .vs**
 *steps.docx
+appsettings.Development.json
+appsettings.json
