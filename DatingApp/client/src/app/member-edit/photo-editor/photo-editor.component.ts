@@ -1,3 +1,4 @@
+import { MembersService } from './../../services/members.service';
 import { AccountService } from './../../services/account.service';
 import { environment } from './../../../environments/environment';
 import { Component, Input, OnInit } from '@angular/core';
@@ -5,6 +6,7 @@ import { Member } from 'src/app/models/member';
 import { User } from 'src/app/models/user';
 import { take } from 'rxjs';
 import { FileUploader, FileUploaderOptions } from 'ng2-file-upload';
+import { Photo } from 'src/app/models/photo';
 
 
 @Component({
@@ -20,7 +22,7 @@ export class PhotoEditorComponent implements OnInit {
   baseUrl = environment.apiUrl;
   user: User;
 
-  constructor(private accountService: AccountService) {
+  constructor(private accountService: AccountService, private memberService: MembersService) {
     this.accountService.currentUser$.pipe(take(1)).subscribe(user => this.user = user as User)
   }
 
@@ -45,7 +47,7 @@ export class PhotoEditorComponent implements OnInit {
       file.withCredentials = false;
     }
 
-    this.uploader.onSuccessItem = (item, response, status, headers) =>{
+    this.uploader.onSuccessItem = (item, response, status, headers) => {
       if (response) {
         const photo = JSON.parse(response);
         this.member.photos.push(photo);
@@ -53,8 +55,29 @@ export class PhotoEditorComponent implements OnInit {
     }
   }
 
-  fileOverBase(e: any){
+  fileOverBase(e: any) {
     this.hasBaseDropZoneOver = e;
+  }
+
+  setMainPhoto(photo: Photo) {
+    this.memberService.setMainPhoto(photo.id).subscribe(() => {
+      this.user.photoUrl = photo.url;
+      this.accountService.setCurrentUser(this.user);
+
+      this.member.photoUrl = photo.url;
+      this.member.photos.forEach(p => {
+        p.isMain = p.id === photo.id;
+        // or
+        // if (p.isMain) p.isMain = false;
+        // if (p.id === photo.id) p.isMain = false;
+      })
+    })
+  }
+
+  deletePhoto(photoId:number){
+    this.memberService.deletePhoto(photoId).subscribe(()=>{
+      this.member.photos = this.member.photos.filter(p=>p.id!==photoId);
+    })
   }
 
 }
