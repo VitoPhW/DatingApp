@@ -8,35 +8,34 @@
     <div class="alert alert-info" *ngIf="editForm.dirty">
 
       <strong>Information</strong>
-       You have made changes. any unsaved changes will be lost
+      You have made changes. any unsaved changes will be lost
 
-      </div>
+    </div>
   </div>
   <div class="col-4">
     <div class="card">
-        <img class="card-img-top img-thumbnail" src="{{member.photoUrl || './assets/user.png'}}"
-            alt="{{member.knownAs}}">
-        <div class="card-body">
-            <div>
-                <strong>Location:</strong>
-                <p>{{member.city}}, {{member.country}}</p>
-            </div>
-            <div>
-                <strong>Age:</strong>
-                <p>{{member.age}}</p>
-            </div>
-            <div>
-                <strong>Last Active:</strong>
-                <p>{{member.lastActive}}</p>
-            </div>
-            <div>
-                <strong>Member Since:</strong>
-                <p>{{member.created}}</p>
-            </div>
+      <img class="card-img-top img-thumbnail" src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.knownAs}}">
+      <div class="card-body">
+        <div>
+          <strong>Location:</strong>
+          <p>{{member.city}}, {{member.country}}</p>
         </div>
-        <div class="card-footer">
-            <button [disabled]="editForm.pristine" form="editform" type="submit" class="btn btn-success btn-block">Save Changes</button>
+        <div>
+          <strong>Age:</strong>
+          <p>{{member.age}}</p>
         </div>
+        <div>
+          <strong>Last Active:</strong>
+          <p>{{member.lastActive}}</p>
+        </div>
+        <div>
+          <strong>Member Since:</strong>
+          <p>{{member.created}}</p>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button [disabled]="editForm.pristine" form="editForm" type="submit" class="btn btn-success btn-block">Save Changes</button>
+      </div>
     </div>
   </div>
   <div class="col-8">

@@ -32,10 +32,10 @@ export class MembersService {
   updateMember(member: Member) {
     return this.http.put(`${this.baseUrl}users`, member).pipe(
       tap(_ => {
-        const index = this.members.findIndex(x => x.id == member.id);
+        const index = this.members.findIndex(x => x.id === member.id);
         this.members[index] = member;
       })
-    );
+    )
   }
 
   setMainPhoto(photoId: number) {//: Observable<any> // optional
@@ -43,6 +43,6 @@ export class MembersService {
   }
 
   deletePhoto(photoId: number){
-    return this.http.put(`${this.baseUrl}users/delete-photo/${photoId}`, {});
+    return this.http.delete(`${this.baseUrl}users/delete-photo/${photoId}`);
   }
 }

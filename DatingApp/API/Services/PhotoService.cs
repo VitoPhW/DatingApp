@@ -34,7 +34,7 @@ namespace API.Services
             {
                 using var stream = file.OpenReadStream();
                 var uploadParams = new ImageUploadParams(){
-                    File = new FileDescription(file .FileName, stream),
+                    File = new FileDescription(file.FileName, stream),
                     Transformation = new Transformation().Width(500).Height(500).Crop("fill").Gravity("face")
                 };
                 uploadResult= await _cloudinary.UploadAsync(uploadParams);
