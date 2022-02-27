@@ -38,7 +38,7 @@ export class AccountService {
     this.currentUserSource$.next(null);
   }
 
-  regiser(model: any){
+  register(model: any){
     return this.http.post<User>(this.baseUrl + 'account/register', model)
     .pipe(
       map((user: User) => {
