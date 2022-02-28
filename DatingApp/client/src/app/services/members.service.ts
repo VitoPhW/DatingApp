@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from './../../environments/environment';
+import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
 import { Member } from '../models/member';
-import { Observable, of, tap } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,15 +16,18 @@ export class MembersService {
   constructor(private http: HttpClient) { }
 
   getMembers(): Observable<Member[]> {
-    if (this.members.length) { return of(this.members) }
-    return this.http.get<Member[]>(`${this.baseUrl}users`).pipe(tap(members => this.members = members)
+    // if (this.members.length) {
+    //   return of(this.members);
+    // }
+    return this.http.get<Member[]>(`${this.baseUrl}users`).pipe(
+      tap(members => this.members = members)
     )
   }
 
   getMember(username: string) // creating a function that brings a "member" from a server
     : Observable<Member> // turning the function to one that can let you know when she is back with the "member"
   {
-    const member = this.members.find(x => x.username == username);
+    const member = this.members.find(x => x.username === username);
     if (member) { return of(member); }
 
     return this.http.get<Member>(`${this.baseUrl}users/${username}`) // ??? where from come the "member"
