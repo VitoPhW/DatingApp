@@ -23,6 +23,7 @@ import { MemberEditComponent } from './member-edit/member-edit.component';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { TextInputComponent } from './forms/text-input/text-input.component';
 import { DateInputComponent } from './forms/date-input/date-input.component';
+import { SharedModule } from './modules/shared.module';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { DateInputComponent } from './forms/date-input/date-input.component';
     DateInputComponent
   ],
   imports: [
+    SharedModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

@@ -5,6 +5,8 @@ import { MemberListComponent } from '../members/member-list/member-list.componen
 import { MemberDetailComponent } from '../members/member-detail/member-detail.component';
 import { MemberCardComponent } from '../members/member-card/member-card.component';
 import { SharedModule } from './shared.module';
+import { FormsModule } from '@angular/forms';
+
 const routes: Routes = [
   { path: '', component:MemberListComponent, pathMatch: 'full'},
   { path: ':username', component: MemberDetailComponent }
@@ -25,6 +27,7 @@ const routes: Routes = [
     RouterModule,
     MemberListComponent,
     MemberDetailComponent,
+    FormsModule,
     MemberCardComponent
   ]
 })
