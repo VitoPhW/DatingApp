@@ -23,7 +23,13 @@ namespace API.Entities
         public string City { get; set; }
         public string Country { get; set; }
         public ICollection<Photo> Photos { get; set; }
-
-        
+        /// <Summary>
+        ///  who liked this currently logged in
+        /// </Summary>
+        public ICollection<UserLike> LikedByUsers { get; set; }
+        /// <Summary>
+        ///  who this users liked
+        /// </Summary>
+        public ICollection<UserLike> LikedUsers { get; set; }
     }
 }
