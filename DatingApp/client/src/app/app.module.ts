@@ -1,5 +1,4 @@
-import { PhotoEditorComponent } from './member-edit/photo-editor/photo-editor.component';
-import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -19,11 +18,14 @@ import { CoreModule } from './modules/core.module';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { SharedModule } from './modules/shared.module';
 import { MemberEditComponent } from './member-edit/member-edit.component';
-import { LoadingInterceptor } from './interceptors/loading.interceptor';
+import { PhotoEditorComponent } from './member-edit/photo-editor/photo-editor.component';
 import { TextInputComponent } from './forms/text-input/text-input.component';
 import { DateInputComponent } from './forms/date-input/date-input.component';
-import { SharedModule } from './modules/shared.module';
+
+
 
 
 @NgModule({
@@ -32,6 +34,8 @@ import { SharedModule } from './modules/shared.module';
     NavComponent,
     HomeComponent,
     RegisterComponent,
+    TextInputComponent,
+    DateInputComponent,
     ListsComponent,
     MessagesComponent,
     TestErrorsComponent,
@@ -39,9 +43,8 @@ import { SharedModule } from './modules/shared.module';
     ServerErrorComponent,
     MemberEditComponent,
     PhotoEditorComponent,
-    TextInputComponent,
-    DateInputComponent
-  ],
+
+   ],
   imports: [
     SharedModule,
     BrowserModule,
@@ -50,7 +53,8 @@ import { SharedModule } from './modules/shared.module';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    CoreModule
+    CoreModule,
+
   ],
   providers: [
     {

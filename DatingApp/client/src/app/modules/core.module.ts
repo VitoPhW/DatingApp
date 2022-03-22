@@ -6,13 +6,10 @@ import { SharedModule } from './shared.module';
 
 @NgModule({
   imports: [
-    CommonModule,
-    SharedModule
+    CommonModule
   ],
 
-  exports: [
-    SharedModule
-  ],
+  exports: [],
 
   declarations: []
 })
