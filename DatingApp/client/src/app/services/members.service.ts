@@ -17,6 +17,7 @@ export class MembersService {
   baseUrl = environment.apiUrl;
   members: Member[] = [];
   memberCache = new Map<string, PaginatedResult<Member[]>>();
+  likesCache = new Map<string, PaginatedResult<Partial<Member>[]>>(); //likes cache store
   user: User;
   userParams: UserParams;
 
@@ -38,10 +39,14 @@ export class MembersService {
     return this.http.post(url, {});
   }
 
-  getLikes(predicate: string, pageNumber: number, pageSize: number) {
+  getLikes(predicate: string, pageNumber: number, pageSize: number, cached: boolean) {
     let params = this.getPaginationParams(pageNumber, pageSize);
     params = params.append('predicate', predicate);
-    return this.getPaginatedResult<Partial<Member>[]>(`${this.baseUrl}likes`, params);
+    return this.getPaginatedResult<Partial<Member>[]>(`${this.baseUrl}likes`, params)
+    //trying to build cache:
+    .pipe(
+      tap(res => this.likesCache.set(predicate, res))
+    );
 
     // return this.http.get<Partial<Member>[]>(`${this.baseUrl}likes?predicate=${predicate}`);
   }

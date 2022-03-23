@@ -22,16 +22,22 @@
 
 <div class="d-flex justify-content-center" *ngIf="pagination">
 
-  <pagination
-  [boundaryLinks]="true"
-  [totalItems]="pagination.totalItems"
-  [itemsPerPage]="pagination.itemsPerPage"
-  [(ngModel)]="pagination.currentPage"
-  (pageChanged)="pageChanged($event)"
-  previousText="&lsaquo;"
-  nextText="&rsaquo;"
-  firstText="&laquo;"
-  lastText="&raquo;"
-  >
+  <pagination [boundaryLinks]="true" [totalItems]="pagination.totalItems" [itemsPerPage]="pagination.itemsPerPage"
+    [(ngModel)]="pagination.currentPage" (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;"
+    firstText="&laquo;" lastText="&raquo;">
 
-</pagination>
+  </pagination>
+  <!-- Check box for cached or uncached -->
+  <div>
+    <button
+      type="button"
+      class="btn btn-primary ml-5"
+      [(ngModel)]="singleModel"
+      btnCheckbox
+      [btnCheckboxTrue]="true"
+      [btnCheckboxFalse]="false">
+      Cached
+    </button>
+  </div>
+
+</div>
