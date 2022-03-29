@@ -44,6 +44,7 @@ import { DateInputComponent } from './forms/date-input/date-input.component';
     MemberEditComponent,
     PhotoEditorComponent,
 
+
    ],
   imports: [
     SharedModule,
